@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carpentry.Core", "Carpentry.Core\Carpentry.Core.csproj", "{17055A75-A34B-4954-969D-1CB44CBFFC0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarpentryShop.Core", "Carpentry.Core\CarpentryShop.Core.csproj", "{17055A75-A34B-4954-969D-1CB44CBFFC0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carpentry.Services", "Carpentry.Services\Carpentry.Services.csproj", "{C5DBA82F-B708-4B7B-A519-5E44284D1C20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarpentryShop.Services", "Carpentry.Services\CarpentryShop.Services.csproj", "{C5DBA82F-B708-4B7B-A519-5E44284D1C20}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarpentryShop.DataAccess.SQL", "CarpentryShop.DataAccess.SQL\CarpentryShop.DataAccess.SQL.csproj", "{BEBFD246-8DBD-47EA-A533-7E754552EF80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carpentry.DataAccess.InMemory", "Carpentry.DataAccess.InMemory\Carpentry.DataAccess.InMemory.csproj", "{39360E1C-3507-40D7-9B2B-9DD58F66B1AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarpentryShop.DataAccess.InMemory", "Carpentry.DataAccess.InMemory\CarpentryShop.DataAccess.InMemory.csproj", "{39360E1C-3507-40D7-9B2B-9DD58F66B1AF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarpentryShop.WebUI", "CarpentryShop.WebUI\CarpentryShop.WebUI.csproj", "{DD6AF1EB-C200-4E12-B5B5-52EDED1192B7}"
 EndProject
