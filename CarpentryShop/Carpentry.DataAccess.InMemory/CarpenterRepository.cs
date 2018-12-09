@@ -8,7 +8,7 @@ using Carpentry.Core.Models;
 
 namespace Carpentry.DataAccess.InMemory
 {
-    class CarpenterRepository
+    public class CarpenterRepository
     {
         ObjectCache cache = MemoryCache.Default;
         List<Carpenter> carpenters;

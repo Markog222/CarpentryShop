@@ -195,6 +195,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CarpenterManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -265,6 +266,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\CarpenterManager\Index.cshtml" />
+    <Content Include="Views\CarpenterManager\Create.cshtml" />
+    <Content Include="Views\CarpenterManager\Edit.cshtml" />
+    <Content Include="Views\CarpenterManager\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -281,6 +286,24 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Carpentry.Core\CarpentryShop.Core.csproj">
+      <Project>{17055a75-a34b-4954-969d-1cb44cbffc0e}</Project>
+      <Name>CarpentryShop.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Carpentry.DataAccess.InMemory\CarpentryShop.DataAccess.InMemory.csproj">
+      <Project>{39360e1c-3507-40d7-9b2b-9dd58f66b1af}</Project>
+      <Name>CarpentryShop.DataAccess.InMemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Carpentry.Services\CarpentryShop.Services.csproj">
+      <Project>{c5dba82f-b708-4b7b-a519-5e44284d1c20}</Project>
+      <Name>CarpentryShop.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarpentryShop.DataAccess.SQL\CarpentryShop.DataAccess.SQL.csproj">
+      <Project>{bebfd246-8dbd-47ea-a533-7e754552ef80}</Project>
+      <Name>CarpentryShop.DataAccess.SQL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
