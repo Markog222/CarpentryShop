@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace Carpentry.Core.Models
 {
-    public class Carpenter
+    public class Carpenter : BaseEntity
     {
-        public string Id { get; set; }
-
+      
         [StringLength(20)]
         [DisplayName("Carpenter Name")]
         public string Name { get; set; }
@@ -21,14 +20,9 @@ namespace Carpentry.Core.Models
         public decimal Price { get; set; }
         public string Category { get; set; }
         public string Image { get; set; }
-        public string PhoneNumber { get; set; }
-        public string AssociatedVendor { get; set; }
+       
 
-
-        public Carpenter()
-        {
-            this.Id = Guid.NewGuid().ToString();
-        }
+           
     }
 
 }

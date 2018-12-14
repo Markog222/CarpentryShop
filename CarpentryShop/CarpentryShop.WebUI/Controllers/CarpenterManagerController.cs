@@ -4,17 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Carpentry.Core.Models;
+using Carpentry.Core.ViewModels;
 using Carpentry.DataAccess.InMemory;
 
 namespace CarpentryShop.WebUI.Controllers
 {
     public class CarpenterManagerController : Controller
     {
-        CarpenterRepository context;
+        InMemoryRepository<Carpenter> context;
+        InMemoryRepository<ProductCategory> productCategories;
 
         public CarpenterManagerController()
         {
-            context = new CarpenterRepository();
+            context = new InMemoryRepository<Carpenter>();
+            productCategories = new InMemoryRepository<ProductCategory>();
         }
 
         // GET: CarpenterManager
@@ -27,19 +30,22 @@ namespace CarpentryShop.WebUI.Controllers
 
         public ActionResult Create()
         {
-            Carpenter carpenter = new Carpenter();
-            return View(carpenter);
+            ProductManagerViewModel viewModel = new ProductManagerViewModel();
+            
+            viewModel.Carpenter = new Carpenter();
+            viewModel.productCategories = productCategories.Collection();
+            return View(viewModel);
         }
         [HttpPost]
-        public ActionResult Create(Carpenter carpenter)
+        public ActionResult Create(Carpenter carpenters)
         {
             if (!ModelState.IsValid)
             {
-                return View(carpenter);
+                return View(carpenters);
                 }
             else
             {
-                context.Insert(carpenter);
+                context.Insert(carpenters);
                 context.Commit();
 
                 return RedirectToAction("Index");
@@ -49,18 +55,22 @@ namespace CarpentryShop.WebUI.Controllers
 
         public ActionResult Edit (String Id)
         {
-            Carpenter carpenter = context.Find(Id);
-            if (carpenter == null)
+            Carpenter carpenters = context.Find(Id);
+            if (carpenters == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                return View(carpenter);
+                ProductManagerViewModel viewModel = new ProductManagerViewModel();
+                viewModel.Carpenter = carpenters;
+                viewModel.productCategories = productCategories.Collection();
+
+                return View(viewModel);
             }
         }
         [HttpPost]
-        public ActionResult Edit(Carpenter carpenter, string Id)
+        public ActionResult Edit(Carpenter carpenters, string Id)
         {
             Carpenter carpenterToEdit = context.Find(Id);
             if (carpenterToEdit == null)
@@ -71,16 +81,15 @@ namespace CarpentryShop.WebUI.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    return View(carpenter);
+                    return View(carpenters);
                 }
 
-                carpenterToEdit.Category = carpenter.Category;
-                carpenterToEdit.Description = carpenter.Description;
-                carpenterToEdit.Image = carpenter.Image;
-                carpenterToEdit.Name = carpenter.Name;
-                carpenterToEdit.Price = carpenter.Price;
-                carpenterToEdit.PhoneNumber = carpenter.PhoneNumber;
-                carpenterToEdit.AssociatedVendor = carpenter.AssociatedVendor;
+                carpenterToEdit.Category = carpenters.Category;
+                carpenterToEdit.Description = carpenters.Description;
+                carpenterToEdit.Image = carpenters.Image;
+                carpenterToEdit.Name = carpenters.Name;
+                carpenterToEdit.Price = carpenters.Price;
+                
 
                 context.Commit();
 

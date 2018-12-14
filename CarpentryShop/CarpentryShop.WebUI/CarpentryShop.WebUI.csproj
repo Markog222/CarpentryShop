@@ -198,6 +198,7 @@
     <Compile Include="Controllers\CarpenterManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductCategoryManagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -216,6 +217,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\Carpenter\completed.jpg" />
+    <Content Include="Image\Carpenter\First.jpg" />
+    <Content Include="Image\Carpenter\second.jpg" />
+    <Content Include="Image\Carpenter\select.jpg" />
+    <Content Include="Image\Carpenter\third.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -267,12 +273,17 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\CarpenterManager\Index.cshtml" />
-    <Content Include="Views\CarpenterManager\Create.cshtml" />
     <Content Include="Views\CarpenterManager\Edit.cshtml" />
     <Content Include="Views\CarpenterManager\Delete.cshtml" />
+    <Content Include="Views\ProductCategoryManager\Index.cshtml" />
+    <Content Include="Views\ProductCategoryManager\Create.cshtml" />
+    <Content Include="Views\ProductCategoryManager\Edit.cshtml" />
+    <Content Include="Views\ProductCategoryManager\Delete.cshtml" />
+    <Content Include="Views\CarpenterManager\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ProductManager\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

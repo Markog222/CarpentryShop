@@ -32,31 +32,31 @@ namespace Carpentry.DataAccess.InMemory
             carpenters.Add(p);
         }
 
-        public void Update(Carpenter product)
+        public void Update(Carpenter carpenter)
         {
-            Carpenter productToUpdate = carpenters.Find(p => p.Id == product.Id);
+            Carpenter carpenterToUpdate = carpenters.Find(p => p.Id == carpenter.Id);
 
-            if (productToUpdate != null)
+            if (carpenterToUpdate != null)
             {
-                productToUpdate = product;
+                carpenterToUpdate = carpenter;
             }
             else
             {
-                throw new Exception("Product no found");
+                throw new Exception("Carpenter no found");
             }
         }
 
         public Carpenter Find(string Id)
         {
-            Carpenter product = carpenters.Find(p => p.Id == Id);
+            Carpenter carpenter = carpenters.Find(p => p.Id == Id);
 
-            if (product != null)
+            if (carpenter != null)
             {
-                return product;
+                return carpenter;
             }
             else
             {
-                throw new Exception("Product no found");
+                throw new Exception("Carpenter no found");
             }
         }
 
@@ -67,15 +67,15 @@ namespace Carpentry.DataAccess.InMemory
 
         public void Delete(string Id)
         {
-            Carpenter productToDelete = carpenters.Find(p => p.Id == Id);
+            Carpenter carpenterToDelete = carpenters.Find(p => p.Id == Id);
 
-            if (productToDelete != null)
+            if (carpenterToDelete != null)
             {
-                carpenters.Remove(productToDelete);
+                carpenters.Remove(carpenterToDelete);
             }
             else
             {
-                throw new Exception("Product no found");
+                throw new Exception("Carpenter not found");
             }
 
         }

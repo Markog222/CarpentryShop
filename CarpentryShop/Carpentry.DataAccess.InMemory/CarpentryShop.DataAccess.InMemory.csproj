@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarpenterRepository.cs" />
+    <Compile Include="InMemoryRepository.cs" />
+    <Compile Include="ProductCategoryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
