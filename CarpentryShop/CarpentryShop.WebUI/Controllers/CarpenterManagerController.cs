@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Carpentry.Core.Contracts;
 using Carpentry.Core.Models;
 using Carpentry.Core.ViewModels;
 using Carpentry.DataAccess.InMemory;
@@ -11,13 +12,13 @@ namespace CarpentryShop.WebUI.Controllers
 {
     public class CarpenterManagerController : Controller
     {
-        InMemoryRepository<Carpenter> context;
-        InMemoryRepository<ProductCategory> productCategories;
+        IRepository<Carpenter> context;
+        IRepository<ProductCategory> productCategories;
 
-        public CarpenterManagerController()
+        public CarpenterManagerController(IRepository<Carpenter> carpenterContext, IRepository<ProductCategory> productCategoryContext)
         {
-            context = new InMemoryRepository<Carpenter>();
-            productCategories = new InMemoryRepository<ProductCategory>();
+            context = carpenterContext;
+            productCategories = productCategoryContext;
         }
 
         // GET: CarpenterManager

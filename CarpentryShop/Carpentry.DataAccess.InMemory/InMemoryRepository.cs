@@ -4,11 +4,12 @@ using System.Linq;
 using System.Runtime.Caching;
 using System.Text;
 using System.Threading.Tasks;
+using Carpentry.Core.Contracts;
 using Carpentry.Core.Models;
 
 namespace Carpentry.DataAccess.InMemory
 {
-    public class InMemoryRepository<T> where T : BaseEntity
+    public class InMemoryRepository<T> : IRepository<T> where T : BaseEntity
     {
         ObjectCache cache = MemoryCache.Default;
         List<T> items;
@@ -28,6 +29,7 @@ namespace Carpentry.DataAccess.InMemory
         {
             cache[className] = items;
         }
+
 
         public void Insert(T t)
         {
