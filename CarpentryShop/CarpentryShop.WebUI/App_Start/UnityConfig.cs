@@ -2,6 +2,7 @@ using System;
 using Carpentry.Core.Contracts;
 using Carpentry.Core.Models;
 using Carpentry.DataAccess.InMemory;
+using CarpentryShop.DataAccess.SQL;
 using CarpentryShop.WebUI.Controllers;
 using Unity;
 using Unity.Injection;
@@ -46,8 +47,8 @@ namespace CarpentryShop.WebUI
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
-            container.RegisterType<IRepository<Carpenter>, InMemoryRepository<Carpenter>>();
-            container.RegisterType<IRepository<ProductCategory>, InMemoryRepository<ProductCategory>>();
+            container.RegisterType<IRepository<Carpenter>, SQLRepository<Carpenter>>();
+            container.RegisterType<IRepository<ProductCategory>, SQLRepository<ProductCategory>>();
             container.RegisterType <AccountController> (new InjectionConstructor());
         }
     }
