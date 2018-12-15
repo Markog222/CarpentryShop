@@ -10,6 +10,6 @@ namespace Carpentry.Core.ViewModels
     public class ProductManagerViewModel
     {
         public Carpenter Carpenter { get; set; }
-        public IEnumerable<ProductCategory> productCategories { get; set; }
+        public IEnumerable<ProductCategory> ProductCategories { get; set; }
     }
 }

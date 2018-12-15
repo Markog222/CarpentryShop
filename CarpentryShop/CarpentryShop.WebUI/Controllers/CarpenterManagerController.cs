@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -24,9 +25,9 @@ namespace CarpentryShop.WebUI.Controllers
         // GET: CarpenterManager
         public ActionResult Index()
         {
-            List<Carpenter> carpenters = context.Collection().ToList(); 
+            List<Carpenter> carpenter = context.Collection().ToList(); 
 
-            return View(carpenters);
+            return View(carpenter);
         }
 
         public ActionResult Create()
@@ -34,19 +35,25 @@ namespace CarpentryShop.WebUI.Controllers
             ProductManagerViewModel viewModel = new ProductManagerViewModel();
             
             viewModel.Carpenter = new Carpenter();
-            viewModel.productCategories = productCategories.Collection();
+            viewModel.ProductCategories = productCategories.Collection();
             return View(viewModel);
         }
         [HttpPost]
-        public ActionResult Create(Carpenter carpenters)
+        public ActionResult Create(Carpenter carpenter, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
             {
-                return View(carpenters);
+                return View(carpenter);
                 }
             else
             {
-                context.Insert(carpenters);
+                if(file != null)
+                {
+                    carpenter.Image = carpenter.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//CarpenterImages//") + carpenter.Image);
+                }
+
+                context.Insert(carpenter);
                 context.Commit();
 
                 return RedirectToAction("Index");
@@ -56,22 +63,22 @@ namespace CarpentryShop.WebUI.Controllers
 
         public ActionResult Edit (String Id)
         {
-            Carpenter carpenters = context.Find(Id);
-            if (carpenters == null)
+            Carpenter carpenter = context.Find(Id);
+            if (carpenter == null)
             {
                 return HttpNotFound();
             }
             else
             {
                 ProductManagerViewModel viewModel = new ProductManagerViewModel();
-                viewModel.Carpenter = carpenters;
-                viewModel.productCategories = productCategories.Collection();
+                viewModel.Carpenter = carpenter;
+                viewModel.ProductCategories = productCategories.Collection();
 
                 return View(viewModel);
             }
         }
         [HttpPost]
-        public ActionResult Edit(Carpenter carpenters, string Id)
+        public ActionResult Edit(Carpenter carpenter, string Id, HttpPostedFileBase file)
         {
             Carpenter carpenterToEdit = context.Find(Id);
             if (carpenterToEdit == null)
@@ -82,14 +89,18 @@ namespace CarpentryShop.WebUI.Controllers
             {
                 if (!ModelState.IsValid)
                 {
-                    return View(carpenters);
+                    return View(carpenter);
+                }
+                if (file != null)
+                {
+                    carpenter.Image = carpenter.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//CarpenterImages//") + carpenter.Image);
                 }
 
-                carpenterToEdit.Category = carpenters.Category;
-                carpenterToEdit.Description = carpenters.Description;
-                carpenterToEdit.Image = carpenters.Image;
-                carpenterToEdit.Name = carpenters.Name;
-                carpenterToEdit.Price = carpenters.Price;
+                carpenterToEdit.Category = carpenter.Category;
+                carpenterToEdit.Description = carpenter.Description;
+                carpenterToEdit.Name = carpenter.Name;
+                carpenterToEdit.Price = carpenter.Price;
                 
 
                 context.Commit();
